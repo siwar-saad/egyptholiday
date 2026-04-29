@@ -1,0 +1,107 @@
+@import url("https://fonts.googleapis.com/css2?family=Inika:wght@400;700&display=swap");
+
+.packages-page {
+  min-height: 100vh;
+  background: #d8aa73;
+  font-family: "Inika", serif;
+  padding-top: 70px;
+}
+
+.packages-hero {
+  padding: 35px 20px 25px;
+  text-align: center;
+}
+
+.packages-hero-content h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #24160f;
+  margin-bottom: 10px;
+}
+
+.packages-hero-content p {
+  font-size: 11px;
+  color: #3c2a1f;
+  max-width: 520px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+.packages-grid-section {
+  padding: 20px 10px 40px;
+}
+
+.packages-grid {
+  max-width: 980px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px 28px;
+  justify-items: center;
+}
+
+.package-card {
+  position: relative;
+  width: 100%;
+  max-width: 150px;
+  height: 120px;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.package-card:hover {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 14px 24px rgba(0, 0, 0, 0.16);
+}
+
+.package-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.35s ease;
+}
+
+.package-card:hover img {
+  transform: scale(1.06);
+}
+
+.package-card span {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  background: rgba(216, 170, 115, 0.88);
+  color: #24160f;
+  font-size: 10px;
+  padding: 3px 7px;
+  border-radius: 6px;
+  text-transform: lowercase;
+}
+
+@media (max-width: 900px) {
+  .packages-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .packages-page {
+    padding-top: 60px;
+  }
+
+  .packages-hero-content h1 {
+    font-size: 24px;
+  }
+
+  .packages-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .package-card {
+    max-width: 135px;
+    height: 112px;
+  }
+}
