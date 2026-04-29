@@ -3,6 +3,7 @@ import "./Login.css";
 import loginImg from "../assets/image/login.png";
 import Navbar from "../components/navbar";
 
+
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

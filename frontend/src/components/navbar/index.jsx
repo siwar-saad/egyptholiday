@@ -1,14 +1,18 @@
 import "./style.css";
 import { useNavigate } from "react-router-dom";
 import { FaUser } from "react-icons/fa";
+import agency from "../../assets/image/agency.png";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
   const navigate = useNavigate();
 
   return (
     <header className="navbar">
-      <div className="navbar-left" onClick={() => navigate("/")}>
-        Egypt Holiday
+      <div className="navbar-left">
+        <Link to="/">
+          <img src={agency} alt="Logo" className="navbar-logo" />
+        </Link>
       </div>
 
       <nav className="navbar-links">

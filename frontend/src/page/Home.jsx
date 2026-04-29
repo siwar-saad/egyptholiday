@@ -9,7 +9,7 @@ import dahabImg from "../assets/image/dahab.jpeg";
 import sharmImg from "../assets/image/sharm.jpeg";
 import bgImg from "../assets/image/bg.png";
 import LuxorImg from "../assets/image/Luxor.jpg";
-import pyra from "../assets/image/pyra.png"
+import pyra from "../assets/image/pyra.png";
 
 /* CUSTOMERS */
 import customer1 from "../assets/image/sara.png";
@@ -17,6 +17,8 @@ import customer2 from "../assets/image/ahmed.png";
 import customer3 from "../assets/image/lara.png";
 
 export default function Home() {
+  const [showButton, setShowButton] = useState(false);
+
   const destinations = [
     { name: "Cairo", desc: "Explore Egypt", img: cairoCover },
     { name: "Dahab", desc: "Explore Egypt", img: dahabImg },
@@ -72,6 +74,27 @@ export default function Home() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const infoSection = document.getElementById("info");
+
+      if (infoSection) {
+        const rect = infoSection.getBoundingClientRect();
+
+        if (rect.top <= window.innerHeight / 1.25) {
+          setShowButton(true);
+        } else {
+          setShowButton(false);
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   const handleSwap = () => {
     const temp = fromCountry;
     setFromCountry(toCountry);
@@ -96,6 +119,10 @@ export default function Home() {
   const decreaseChildren = (e) => {
     e.stopPropagation();
     setChildren((prev) => (prev > 0 ? prev - 1 : 0));
+  };
+
+  const handleBookNow = () => {
+    document.getElementById("hero")?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
@@ -264,29 +291,29 @@ export default function Home() {
           <div className="info-side left-side">
             <div className="info-block">
               <h3>Basic Facts</h3>
-              <p>
-                <li>Egypt is in Northeast Africa </li>
-                <li>Capital: Cairo </li>
+              <ul>
+                <li>Egypt is in Northeast Africa</li>
+                <li>Capital: Cairo</li>
                 <li>Language: Arabic</li>
-               <li> Currency: Egyptian Pound (EGP)</li>
-              </p>
+                <li>Currency: Egyptian Pound (EGP)</li>
+              </ul>
             </div>
 
             <div className="info-block">
               <h3>History</h3>
-              <p>
-                <li>Over 5,000 years old</li>   
-                <li>Famous for pyramids and pharaohs</li>   
-                <li>Influenced by Greek, Roman, and Islamic cultures</li>          
-              </p>
+              <ul>
+                <li>Over 5,000 years old</li>
+                <li>Famous for pyramids and pharaohs</li>
+                <li>Influenced by Greek, Roman, and Islamic cultures</li>
+              </ul>
             </div>
 
             <div className="info-block">
               <h3>Geography</h3>
-              <p>
+              <ul>
                 <li>Nile River is the main river</li>
                 <li>Includes Nile Valley, deserts, Sinai, Red Sea</li>
-              </p>
+              </ul>
             </div>
           </div>
 
@@ -297,34 +324,33 @@ export default function Home() {
           <div className="info-side right-side">
             <div className="info-block">
               <h3>Cities & Destinations</h3>
-              <p><li>Cairo</li>
-                 <li>Alexandria</li>
-                 <li> Luxor </li>
-                  <li>Aswan</li>
-                  <li> Sharm El Sheikh</li>
-                  </p>
+              <ul>
+                <li>Cairo</li>
+                <li>Alexandria</li>
+                <li>Luxor</li>
+                <li>Aswan</li>
+                <li>Sharm El Sheikh</li>
+              </ul>
             </div>
 
             <div className="info-block">
               <h3>Activities</h3>
-              <p>
+              <ul>
                 <li>Visit monuments</li>
-                 <li>Nile cruises</li>
-                  <li>Diving in the Red Sea</li>
-                  <li> Desert safari</li>
-              </p>
+                <li>Nile cruises</li>
+                <li>Diving in the Red Sea</li>
+                <li>Desert safari</li>
+              </ul>
             </div>
 
             <div className="info-block">
               <h3>Food</h3>
-              <p>
-                <ul>
-                <li>Koshari </li>
-                <li>Ful medames </li>
-                <li>Molokhia </li>
+              <ul>
+                <li>Koshari</li>
+                <li>Ful medames</li>
+                <li>Molokhia</li>
                 <li>Fattah</li>
-                </ul>
-                </p>
+              </ul>
             </div>
           </div>
         </div>
@@ -403,15 +429,17 @@ export default function Home() {
       <section className="why-section">
         <div className="why-left">
           <h2>Why Visit Egypt?</h2>
-          <p>Egypt offers history, beaches, and adventure at an affordable price, making it a unique travel destination.</p>
+          <p>
+            Egypt offers history, beaches, and adventure at an affordable price,
+            making it a unique travel destination.
+          </p>
 
           <h2>Why Choose Us</h2>
           <ul>
-            <li>1 -  Experienced travel experts</li>
-<li>2 - Personalized travel packages</li>
-<li>3 - Professional and friendly team</li>
-<li>4 - Attention to every detail for a 
-perfect trip </li>
+            <li>1 - Experienced travel experts</li>
+            <li>2 - Personalized travel packages</li>
+            <li>3 - Professional and friendly team</li>
+            <li>4 - Attention to every detail for a perfect trip</li>
           </ul>
         </div>
 
@@ -421,121 +449,158 @@ perfect trip </li>
       </section>
 
       <section className="testimonials-section">
-  <h2>Customers Say</h2>
+        <h2>Customers Say</h2>
 
-  <div className="testimonials-grid">
-    <div className="testimonial-card">
-      <div className="testimonial-top">
-        <img src={customer1} alt="Sarah M." className="customer-img" />
-        <div className="testimonial-user-info">
-          <h4>Sarah M.</h4>
-          <div className="stars">⭐⭐⭐⭐⭐</div>
+        <div className="testimonials-grid">
+          <div className="testimonial-card">
+            <div className="testimonial-top">
+              <img src={customer1} alt="Sarah M." className="customer-img" />
+              <div className="testimonial-user-info">
+                <h4>Sarah M.</h4>
+                <div className="stars">⭐⭐⭐⭐⭐</div>
+              </div>
+            </div>
+            <p>
+              Everything Was Perfectly Organized. The Team Made Our Trip Easy,
+              Safe, And Full Of Beautiful Moments. Highly Recommended !
+            </p>
+          </div>
+
+          <div className="testimonial-card">
+            <div className="testimonial-top">
+              <img src={customer2} alt="Ahmed K" className="customer-img" />
+              <div className="testimonial-user-info">
+                <h4>Ahmed K</h4>
+                <div className="stars">⭐⭐⭐⭐⭐</div>
+              </div>
+            </div>
+            <p>
+              Great experience! The communication was clear, and every
+              destination was exactly as described. Excellent service.
+            </p>
+          </div>
+
+          <div className="testimonial-card">
+            <div className="testimonial-top">
+              <img src={customer3} alt="Laura P." className="customer-img" />
+              <div className="testimonial-user-info">
+                <h4>Laura P.</h4>
+                <div className="stars">⭐⭐⭐⭐⭐</div>
+              </div>
+            </div>
+            <p>
+              I discovered Egypt in a completely new way. The planning, timing,
+              and professionalism were outstanding
+            </p>
+          </div>
         </div>
-      </div>
-      <p>
-        Everything Was Perfectly Organized. The Team Made Our Trip Easy, Safe,
-        And Full Of Beautiful Moments. Highly Recommended !
-      </p>
-    </div>
+      </section>
 
-    <div className="testimonial-card">
-      <div className="testimonial-top">
-        <img src={customer2} alt="Ahmed K" className="customer-img" />
-        <div className="testimonial-user-info">
-          <h4>Ahmed K</h4>
-          <div className="stars">⭐⭐⭐⭐⭐</div>
+      <section className="newsletter-pro">
+        <div className="newsletter-pro-left">
+          <img src={pyra} alt="Pyramids" className="newsletter-pro-image" />
         </div>
-      </div>
-      <p>
-        Great experience! The communication was clear, and every destination
-        was exactly as described. Excellent service.
-      </p>
-    </div>
 
-    <div className="testimonial-card">
-      <div className="testimonial-top">
-        <img src={customer3} alt="Laura P." className="customer-img" />
-        <div className="testimonial-user-info">
-          <h4>Laura P.</h4>
-          <div className="stars">⭐⭐⭐⭐⭐</div>
+        <div className="newsletter-pro-right">
+          <div className="newsletter-pro-mail">✉</div>
+
+          <h2 className="newsletter-pro-title">
+            Ready To Explore
+            <br />
+            <span>Egypt?</span>
+          </h2>
+
+          <div className="newsletter-pro-route">
+            <svg
+              className="route-svg"
+              viewBox="0 0 260 120"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M20 80 C 70 20, 120 120, 160 55 S 235 20, 245 65"
+                fill="none"
+                stroke="#2b1c14"
+                strokeWidth="2.5"
+                strokeDasharray="5 5"
+                strokeLinecap="round"
+              />
+            </svg>
+
+            <span className="route-plane">✈</span>
+          </div>
+
+          <div className="newsletter-pro-subtitle">
+            Start Your Journey With Us
+          </div>
+
+          <p className="newsletter-pro-text">
+            Get exclusive travel deals, hidden destinations, and expert tips
+            straight to your inbox. Your next adventure starts here.
+          </p>
+
+          <form className="newsletter-pro-form">
+            <input type="email" placeholder="Enter your email address..." />
+            <button type="submit">Subscribe</button>
+          </form>
         </div>
-      </div>
-      <p>
-        I discovered Egypt in a completely new way. The planning, timing, and
-        professionalism were outstanding
-      </p>
-    </div>
-  </div>
-</section>
-
-<section className="newsletter-pro">
-  <div className="newsletter-pro-left">
-    <img src={pyra} alt="Pyramids" className="newsletter-pro-image" />
-  </div>
-
-  <div className="newsletter-pro-right">
-    <div className="newsletter-pro-mail">✉</div>
-
-    <h2 className="newsletter-pro-title">
-      Ready To Explore
-      <br />
-      <span>Egypt?</span>
-    </h2>
-
-    <div className="newsletter-pro-route">
-
-      <svg
-        className="route-svg"
-        viewBox="0 0 260 120"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M20 80 C 70 20, 120 120, 160 55 S 235 20, 245 65"
-          fill="none"
-          stroke="#2b1c14"
-          strokeWidth="2.5"
-          strokeDasharray="5 5"
-          strokeLinecap="round"
-        />
-      </svg>
-
-      <span className="route-plane">✈</span>
-    </div>
-
-    <div className="newsletter-pro-subtitle">Start Your Journey With Us</div>
-
-    <p className="newsletter-pro-text">
-      Get exclusive travel deals, hidden destinations, and expert tips
-      straight to your inbox. Your next adventure starts here.
-    </p>
-
-    <form className="newsletter-pro-form">
-      <input type="email" placeholder="Enter your email address..." />
-      <button type="submit">Subscribe</button>
-    </form>
-  </div>
-</section>
+      </section>
 
       <footer className="footer-section">
-        <div className="footer-grid">
-          <div>
-            <h2>Need Help?</h2>
-            <p>Call: 01099999234</p>
-          </div>
+  <div className="footer-container">
 
-          <div>
-            <a href="#hero">Home</a>
-            <a href="#info">About</a>
-          </div>
+    {/* LEFT */}
+    <div className="footer-col">
+      <h2 className="footer-logo">Egypt Holiday</h2>
+      <p className="footer-desc">
+        Discover Egypt with us. We offer the best travel experiences,
+        luxury packages, and unforgettable adventures.
+      </p>
 
-          <div>
-            <a href="#">Privacy</a>
-            <a href="#">Terms</a>
-          </div>
-        </div>
+      <div className="footer-social">
+        <a href="#"><i className="fab fa-facebook-f"></i></a>
+        <a href="#"><i className="fab fa-instagram"></i></a>
+        <a href="#"><i className="fab fa-twitter"></i></a>
+        <a href="#"><i className="fab fa-tiktok"></i></a>
+      </div>
+    </div>
 
-        <div className="footer-copy">© 2026 All rights reserved</div>
-      </footer>
+    {/* COMPANY */}
+    <div className="footer-col">
+      <h3>Company</h3>
+      <a href="/">Home</a>
+      <a href="/packages">Packages</a>
+      <a href="/hotel">Hotels</a>
+      <a href="/flights">Flights</a>
+    </div>
+
+    {/* SUPPORT */}
+    <div className="footer-col">
+      <h3>Support</h3>
+      <a href="/reservation">Reservation Info</a>
+      <a href="/cancellation">Cancellation Policy</a>
+      <a href="#">Terms & Conditions</a>
+    </div>
+
+    {/* CONTACT */}
+    <div className="footer-col">
+      <h3>Contact</h3>
+      <p>📞 01099999234</p>
+      <p>📧 contact@egyptholiday.com</p>
+      <p>📍 Egypt, Cairo</p>
+    </div>
+
+  </div>
+
+  <div className="footer-bottom">
+    © 2026 Egypt Holiday Travel — All rights reserved
+  </div>
+</footer>
+
+      {showButton && (
+        <button className="book-now-btn" onClick={handleBookNow}>
+          Book Now
+        </button>
+      )}
     </div>
   );
 }
