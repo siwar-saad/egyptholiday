@@ -547,8 +547,6 @@ export default function Home() {
 
       <footer className="footer-section">
   <div className="footer-container">
-
-    {/* LEFT */}
     <div className="footer-col">
       <h2 className="footer-logo">Egypt Holiday</h2>
       <p className="footer-desc">
@@ -557,38 +555,54 @@ export default function Home() {
       </p>
 
       <div className="footer-social">
-        <a href="#"><i className="fab fa-facebook-f"></i></a>
-        <a href="#"><i className="fab fa-instagram"></i></a>
-        <a href="#"><i className="fab fa-twitter"></i></a>
-        <a href="#"><i className="fab fa-tiktok"></i></a>
+        <a href="#">f</a>
+        <a href="#">◎</a>
+        <a href="#">𝕏</a>
+        <a href="#">♪</a>
       </div>
     </div>
 
-    {/* COMPANY */}
     <div className="footer-col">
       <h3>Company</h3>
-      <a href="/">Home</a>
+      <a href="#hero">Home</a>
       <a href="/packages">Packages</a>
-      <a href="/hotel">Hotels</a>
-      <a href="/flights">Flights</a>
+      <a href="#">Hotels</a>
+      <a href="#">Flights</a>
     </div>
 
-    {/* SUPPORT */}
     <div className="footer-col">
       <h3>Support</h3>
-      <a href="/reservation">Reservation Info</a>
-      <a href="/cancellation">Cancellation Policy</a>
+      <a href="#">Reservation Info</a>
+      <a href="#">Cancellation Policy</a>
       <a href="#">Terms & Conditions</a>
     </div>
 
-    {/* CONTACT */}
     <div className="footer-col">
       <h3>Contact</h3>
-      <p>📞 01099999234</p>
-      <p>📧 contact@egyptholiday.com</p>
-      <p>📍 Egypt, Cairo</p>
-    </div>
 
+      <div className="contact-item">
+        <span>📞</span>
+        <div>
+          <p>01099999234</p>
+          <p>01050971444</p>
+          <p>01050383173</p>
+          <p>0111787867</p>
+        </div>
+      </div>
+
+      <div className="contact-item">
+        <span>📍</span>
+        <div>
+          <p>
+            El-Siiz Area, Next to El-Eman Mosque<br />
+            Mansoura Branch<br />
+            22 Abou Dawoud El Zahery Street<br />
+            Next to Arab Investment Bank<br />
+            Nasr City, Cairo, Egypt
+          </p>
+        </div>
+      </div>
+    </div>
   </div>
 
   <div className="footer-bottom">
