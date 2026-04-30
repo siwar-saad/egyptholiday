@@ -26,18 +26,19 @@ export default function Home() {
     { name: "Luxor", desc: "Explore Egypt", img: LuxorImg },
   ];
 
-  const countries = [
-    "Egypt",
-    "Tunisia",
-    "France",
-    "Italy",
-    "Germany",
-    "Spain",
-    "Turkey",
-    "Morocco",
-    "Saudi Arabia",
-    "United Arab Emirates",
-  ];
+ const locations = [
+  "Cairo International Airport – Cairo, Egypt",
+  "Hurghada International Airport – Hurghada, Egypt",
+  "Sharm El Sheikh International Airport – Sharm El Sheikh, Egypt",
+  "Luxor International Airport – Luxor, Egypt",
+  "Borg El Arab Airport – Alexandria, Egypt",
+  "Tunis-Carthage Airport – Tunis, Tunisia",
+  "Charles de Gaulle Airport – Paris, France",
+  "Fiumicino Airport – Rome, Italy",
+  "Istanbul Airport – Istanbul, Turkey",
+  "Dubai International Airport – Dubai, UAE",
+  "King Abdulaziz Airport – Jeddah, Saudi Arabia",
+];
 
   const [fromCountry, setFromCountry] = useState("Egypt");
   const [toCountry, setToCountry] = useState("");
@@ -152,21 +153,21 @@ export default function Home() {
               }}
             >
               <span className="label">From</span>
-              <h3>{fromCountry || "Select country"}</h3>
+              <h3>{fromCountry || "Select airport"}</h3>
 
               {showFromDropdown && (
                 <div className="search-dropdown">
-                  {countries.map((country, index) => (
+                  {locations.map((location, index) => (
                     <div
                       key={index}
                       className="search-dropdown-item"
                       onClick={(e) => {
                         e.stopPropagation();
-                        setFromCountry(country);
+                        setFromCountry(location);
                         setShowFromDropdown(false);
                       }}
                     >
-                      {country}
+                      {location}
                     </div>
                   ))}
                 </div>
@@ -186,22 +187,22 @@ export default function Home() {
             >
               <span className="label">To</span>
               <h3 className={toCountry ? "" : "light-text"}>
-                {toCountry || "Country, city or airport"}
+                {toCountry || "Airport, city or country"}
               </h3>
 
               {showToDropdown && (
                 <div className="search-dropdown">
-                  {countries.map((country, index) => (
+                  {locations.map((location, index) => (
                     <div
                       key={index}
                       className="search-dropdown-item"
                       onClick={(e) => {
                         e.stopPropagation();
-                        setToCountry(country);
+                        setToCountry(locations);
                         setShowToDropdown(false);
                       }}
                     >
-                      {country}
+                      {locations}
                     </div>
                   ))}
                 </div>
