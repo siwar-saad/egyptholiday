@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import "./Home.css";
 import Navbar from "../components/navbar";
+import { useNavigate } from "react-router-dom";
 
 /* IMAGES */
 import cairoCover from "../assets/image/cairo.jpeg";
@@ -18,6 +19,7 @@ import customer3 from "../assets/image/lara.png";
 
 export default function Home() {
   const [showButton, setShowButton] = useState(false);
+  const navigate = useNavigate();
 
   const destinations = [
     { name: "Cairo", desc: "Explore Egypt", img: cairoCover },
@@ -290,7 +292,7 @@ export default function Home() {
 
         <div className="info-layout">
           <div className="info-side left-side">
-            <div className="info-block">
+            <div className="info-block clickable-info" onClick={() => navigate("/basic-facts")}>
               <h3>Basic Facts</h3>
               <ul>
                 <li>Egypt is in Northeast Africa</li>
@@ -300,7 +302,7 @@ export default function Home() {
               </ul>
             </div>
 
-            <div className="info-block">
+            <div className="info-block clickable-info" onClick={() => navigate("/history")}>
               <h3>History</h3>
               <ul>
                 <li>Over 5,000 years old</li>
@@ -309,7 +311,7 @@ export default function Home() {
               </ul>
             </div>
 
-            <div className="info-block">
+            <div className="info-block clickable-info" onClick={() => navigate("/geography")}>
               <h3>Geography</h3>
               <ul>
                 <li>Nile River is the main river</li>
@@ -323,7 +325,7 @@ export default function Home() {
           </div>
 
           <div className="info-side right-side">
-            <div className="info-block">
+            <div className="info-block clickable-info" onClick={() => navigate("/destinations-info")}>
               <h3>Cities & Destinations</h3>
               <ul>
                 <li>Cairo</li>
@@ -334,7 +336,7 @@ export default function Home() {
               </ul>
             </div>
 
-            <div className="info-block">
+            <div className="info-block clickable-info" onClick={() => navigate("/activities")}>
               <h3>Activities</h3>
               <ul>
                 <li>Visit monuments</li>
@@ -344,7 +346,7 @@ export default function Home() {
               </ul>
             </div>
 
-            <div className="info-block">
+            <div className="info-block clickable-info" onClick={() => navigate("/food")}>
               <h3>Food</h3>
               <ul>
                 <li>Koshari</li>
