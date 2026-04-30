@@ -545,7 +545,7 @@ export default function Home() {
         </div>
       </section>
 
-      <footer className="footer-section">
+     <footer className="footer-section">
   <div className="footer-container">
     <div className="footer-col">
       <h2 className="footer-logo">Egypt Holiday</h2>
@@ -555,11 +555,38 @@ export default function Home() {
       </p>
 
       <div className="footer-social">
-        <a href="#">f</a>
-        <a href="#">◎</a>
-        <a href="#">𝕏</a>
-        <a href="#">♪</a>
-      </div>
+  <a
+    href="https://www.facebook.com/share/18deN5D3jr/"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <i className="fab fa-facebook-f"></i>
+  </a>
+
+  <a
+    href="https://www.instagram.com/egyptholidaytravel0?igsh=OXVtdjM4YWF0N3Fz"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <i className="fab fa-instagram"></i>
+  </a>
+
+  <a
+    href="https://wa.me/201099999234"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <i className="fab fa-whatsapp"></i>
+  </a>
+
+  <a
+    href="https://www.tiktok.com/@egyptholiday.travel"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <i className="fab fa-tiktok"></i>
+  </a>
+</div>
     </div>
 
     <div className="footer-col">
@@ -577,12 +604,12 @@ export default function Home() {
       <a href="#">Terms & Conditions</a>
     </div>
 
-    <div className="footer-col">
+    <div className="footer-col contact-col">
       <h3>Contact</h3>
 
-      <div className="contact-item">
-        <span>📞</span>
-        <div>
+      <div className="contact-block">
+        <div className="contact-icon">📞</div>
+        <div className="contact-text">
           <p>01099999234</p>
           <p>01050971444</p>
           <p>01050383173</p>
@@ -590,16 +617,14 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="contact-item">
-        <span>📍</span>
-        <div>
-          <p>
-            El-Siiz Area, Next to El-Eman Mosque<br />
-            Mansoura Branch<br />
-            22 Abou Dawoud El Zahery Street<br />
-            Next to Arab Investment Bank<br />
-            Nasr City, Cairo, Egypt
-          </p>
+      <div className="contact-block">
+        <div className="contact-icon">📍</div>
+        <div className="contact-text">
+          <p>El-Siiz Area, next to El-Eman Mosque</p>
+          <p>Mansoura Branch</p>
+          <p>22 Abou Dawoud El Zahery Street</p>
+          <p>Next to Arab Investment Bank</p>
+          <p>Nasr City, Cairo, Egypt</p>
         </div>
       </div>
     </div>

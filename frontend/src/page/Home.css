@@ -16,6 +16,38 @@
   --transition: 0.35s ease;
 }
 
+.contact-col h3 {
+  margin-bottom: 20px;
+}
+
+/* BLOCK */
+.contact-block {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+/* ICON */
+.contact-icon {
+  font-size: 18px;
+  color: #935426;
+  margin-top: 3px;
+}
+
+/* TEXT */
+.contact-text p {
+  margin: 2px 0;
+  font-size: 14px;
+  color: #444;
+  line-height: 1.5;
+}
+
+/* hover effect */
+.contact-block:hover .contact-text p {
+  color: #000;
+}
+
 /* BOOK NOW FLOAT BUTTON */
 .book-now-btn {
   position: fixed;
@@ -399,79 +431,134 @@ select {
 }
 
 /* INFO */
+/* INFO PRO */
 .info-section {
-  padding: 70px 40px 60px;
-  background: #ffffff;
+  padding: 90px 40px 80px;
+  background: linear-gradient(180deg, #ffffff 0%, #fbf7f2 100%);
 }
 
 .info-section h2 {
   text-align: center;
   font-family: "Playfair Display", serif;
-  font-size: 26px;
-  font-weight: 600;
-  margin-bottom: 42px;
-  color: #16110d;
+  font-size: 34px;
+  font-weight: 700;
+  color: #1f130d;
+  margin-bottom: 55px;
+  position: relative;
+}
+
+.info-section h2::after {
+  content: "";
+  width: 80px;
+  height: 3px;
+  background: #935426;
+  border-radius: 20px;
+  position: absolute;
+  left: 50%;
+  bottom: -14px;
+  transform: translateX(-50%);
 }
 
 .info-layout {
-  max-width: 1150px;
+  max-width: 1180px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1fr 260px 1fr;
-  column-gap: 70px;
+  grid-template-columns: 1fr 300px 1fr;
+  gap: 65px;
   align-items: center;
 }
 
 .info-side {
   display: flex;
   flex-direction: column;
-  gap: 26px;
+  gap: 24px;
 }
 
 .info-block {
-  background: transparent;
-  padding: 0;
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid rgba(147, 84, 38, 0.12);
+  border-radius: 18px;
+  padding: 18px 20px;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.05);
+  transition: 0.35s ease;
+}
+
+.info-block:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 34px rgba(147, 84, 38, 0.12);
 }
 
 .info-block h3 {
   font-family: "Playfair Display", serif;
-  font-size: 22px;
+  font-size: 24px;
   font-weight: 700;
-  color: #111111;
-  margin-bottom: 8px;
-}
-
-.info-block p,
-.info-block li {
-  font-size: 14px;
-  line-height: 1.45;
-  color: #2c2c2c;
+  color: #2b1a10;
+  margin-bottom: 10px;
 }
 
 .info-block ul {
-  margin: 0;
   padding-left: 18px;
 }
 
-.left-side,
-.right-side {
-  text-align: left;
+.info-block li {
+  font-size: 14px;
+  line-height: 1.7;
+  color: #3a2b22;
 }
 
 .info-center-image {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
 }
 
 .info-image {
-  width: 240px;
+  width: 260px;
   max-width: 100%;
-  height: auto;
   object-fit: contain;
-  display: block;
-  margin: 0 auto;
+  filter: drop-shadow(0 20px 25px rgba(0, 0, 0, 0.18));
+  transition: 0.4s ease;
+}
+
+.info-image:hover {
+  transform: scale(1.04);
+}
+
+@media (max-width: 992px) {
+  .info-layout {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .info-center-image {
+    order: -1;
+  }
+
+  .info-image {
+    width: 220px;
+  }
+}
+
+@media (max-width: 768px) {
+  .info-section {
+    padding: 60px 18px;
+  }
+
+  .info-section h2 {
+    font-size: 28px;
+  }
+
+  .info-block h3 {
+    font-size: 21px;
+  }
+
+  .info-block li {
+    font-size: 13px;
+  }
+
+  .info-image {
+    width: 180px;
+  }
 }
 
 /* TABLET */
@@ -910,26 +997,46 @@ select {
 /* SOCIAL */
 .footer-social {
   display: flex;
-  gap: 12px;
+  gap: 14px;
+  margin-top: 15px;
 }
 
 .footer-social a {
-  width: 40px;
-  height: 40px;
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
   background: #f3ebe4;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 16px;
   color: #111;
-  transition: 0.3s;
+  font-size: 16px;
+  transition: 0.3s ease;
 }
 
 .footer-social a:hover {
-  background: #935426;
-  color: #fff;
   transform: translateY(-5px) scale(1.1);
+}
+
+/* colors hover */
+.footer-social a:nth-child(1):hover {
+  background: #1877f2; /* Facebook */
+  color: white;
+}
+
+.footer-social a:nth-child(2):hover {
+  background: #e1306c; /* Instagram */
+  color: white;
+}
+
+.footer-social a:nth-child(3):hover {
+  background: #25d366; /* WhatsApp */
+  color: white;
+}
+
+.footer-social a:nth-child(4):hover {
+  background: #000000; /* TikTok */
+  color: white;
 }
 
 /* BOTTOM */
