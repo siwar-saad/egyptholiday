@@ -20,9 +20,9 @@ export default function Navbar() {
           Flights
         </button>
 
-        <button className="nav-link-btn" onClick={() => navigate("/#destinations")}>
+        <Link to="/packages" className="nav-link">
           Packages
-        </button>
+        </Link>
 
         <button className="nav-link-btn" onClick={() => navigate("/#info")}>
           Hotels
