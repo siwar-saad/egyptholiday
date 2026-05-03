@@ -33,7 +33,7 @@ export default function Home() {
   ];
 
   const packages = [{ name: "Uzbekistan", desc: "Explore Central Asia", img: uzbekistan },
-    { name: "hurghad", desc: "Explore Egypt", img: hurghad },
+    { name: "Hurghada", desc: "Explore Egypt", img: hurghad },
     { name: "Turkey", desc: "Explore Turkey", img: turkey },
   ];
 
