@@ -4,14 +4,9 @@ require('dotenv').config();
 
 const packageRoutes = require("./routes/packages");
 const subscriberRoutes = require("./routes/subscribers");
-const authRoutes = require("./routes/auth");
-const initializeDatabase = require("./data/initDb");
 
 const app = express();
 const PORT = process.env.PORT || 5000;
-
-// Initialize database
-initializeDatabase();
 
 // Middleware
 app.use(cors());
@@ -21,7 +16,6 @@ app.use(express.json());
 app.use("/images", express.static("public/images"));
 
 // Routes
-app.use("/api/auth", authRoutes);  // For /api/auth/signup, /api/auth/login, etc.
 app.use("/api", subscriberRoutes);  // For /api/subscribe
 app.use("/api/packages", packageRoutes);  // For /api/packages
 
@@ -97,13 +91,8 @@ app.listen(PORT, () => {
   console.log(`\n🚀 Server running on http://localhost:${PORT}`);
   console.log(`\n📋 Available endpoints:`);
   console.log(`   GET  http://localhost:${PORT}/health`);
-  console.log(`   POST http://localhost:${PORT}/api/auth/signup`);
-  console.log(`   POST http://localhost:${PORT}/api/auth/login`);
-  console.log(`   POST http://localhost:${PORT}/api/auth/forgot-password`);
-  console.log(`   POST http://localhost:${PORT}/api/auth/reset-password`);
   console.log(`   POST http://localhost:${PORT}/api/subscribe`);
   console.log(`   GET  http://localhost:${PORT}/api/packages`);
   console.log(`   GET  http://localhost:${PORT}/api/search?to=sharm`);
   console.log(`\n✨ Ready to accept requests!\n`);
 });
-
