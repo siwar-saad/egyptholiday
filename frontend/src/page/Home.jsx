@@ -11,6 +11,9 @@ import sharmImg from "../assets/image/sharm.jpeg";
 import bgImg from "../assets/image/bg.png";
 import LuxorImg from "../assets/image/Luxor.jpg";
 import pyra from "../assets/image/pyra.png";
+import uzbekistan from "../assets/image/uzbekistan.jpg";
+import hurghad from "../assets/image/hurghad.jpg";
+import turkey from "../assets/image/turkey.jpg";
 
 /* CUSTOMERS */
 import customer1 from "../assets/image/sara.png";
@@ -26,21 +29,27 @@ export default function Home() {
     { name: "Dahab", desc: "Explore Egypt", img: dahabImg },
     { name: "Sharm El Sheikh", desc: "Explore Egypt", img: sharmImg },
     { name: "Luxor", desc: "Explore Egypt", img: LuxorImg },
+    
   ];
 
- const locations = [
-  "Cairo International Airport – Cairo, Egypt",
-  "Hurghada International Airport – Hurghada, Egypt",
-  "Sharm El Sheikh International Airport – Sharm El Sheikh, Egypt",
-  "Luxor International Airport – Luxor, Egypt",
-  "Borg El Arab Airport – Alexandria, Egypt",
-  "Tunis-Carthage Airport – Tunis, Tunisia",
-  "Charles de Gaulle Airport – Paris, France",
-  "Fiumicino Airport – Rome, Italy",
-  "Istanbul Airport – Istanbul, Turkey",
-  "Dubai International Airport – Dubai, UAE",
-  "King Abdulaziz Airport – Jeddah, Saudi Arabia",
-];
+  const packages = [{ name: "Uzbekistan", desc: "Explore Central Asia", img: uzbekistan },
+    { name: "hurghad", desc: "Explore Egypt", img: hurghad },
+    { name: "Turkey", desc: "Explore Turkey", img: turkey },
+  ];
+
+  const locations = [
+    "Cairo International Airport – Cairo, Egypt",
+    "Hurghada International Airport – Hurghada, Egypt",
+    "Sharm El Sheikh International Airport – Sharm El Sheikh, Egypt",
+    "Luxor International Airport – Luxor, Egypt",
+    "Borg El Arab Airport – Alexandria, Egypt",
+    "Tunis-Carthage Airport – Tunis, Tunisia",
+    "Charles de Gaulle Airport – Paris, France",
+    "Fiumicino Airport – Rome, Italy",
+    "Istanbul Airport – Istanbul, Turkey",
+    "Dubai International Airport – Dubai, UAE",
+    "King Abdulaziz Airport – Jeddah, Saudi Arabia",
+  ];
 
   const [fromCountry, setFromCountry] = useState("Egypt");
   const [toCountry, setToCountry] = useState("");
@@ -292,7 +301,10 @@ export default function Home() {
 
         <div className="info-layout">
           <div className="info-side left-side">
-            <div className="info-block clickable-info" onClick={() => navigate("/basic-facts")}>
+            <div
+              className="info-block clickable-info"
+              onClick={() => navigate("/basic-facts")}
+            >
               <h3>Basic Facts</h3>
               <ul>
                 <li>Egypt is in Northeast Africa</li>
@@ -300,32 +312,76 @@ export default function Home() {
                 <li>Language: Arabic</li>
                 <li>Currency: Egyptian Pound (EGP)</li>
               </ul>
+
+              <button
+                className="read-btn"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  navigate("/basic-facts");
+                }}
+              >
+                Read More →
+              </button>
             </div>
 
-            <div className="info-block clickable-info" onClick={() => navigate("/history")}>
+            <div
+              className="info-block clickable-info"
+              onClick={() => navigate("/history")}
+            >
               <h3>History</h3>
               <ul>
                 <li>Over 5,000 years old</li>
                 <li>Famous for pyramids and pharaohs</li>
                 <li>Influenced by Greek, Roman, and Islamic cultures</li>
               </ul>
+
+              <button
+                className="read-btn"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  navigate("/basic-facts");
+                }}
+              >
+                Read More →
+              </button>
             </div>
 
-            <div className="info-block clickable-info" onClick={() => navigate("/geography")}>
+            <div
+              className="info-block clickable-info"
+              onClick={() => navigate("/geography")}
+            >
               <h3>Geography</h3>
               <ul>
                 <li>Nile River is the main river</li>
                 <li>Includes Nile Valley, deserts, Sinai, Red Sea</li>
               </ul>
+
+              <button
+                className="read-btn"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  navigate("/basic-facts");
+                }}
+              >
+                Read More →
+              </button>
             </div>
           </div>
 
-          <div className="info-center-image">
-            <img src={cairoImg} alt="Egypt statue" className="info-image" />
+          <div className="cinematic-card">
+            <img
+              src={cairoImg}
+              alt="Egypt statue"
+              className="cinematic-image"
+            />
+            <span className="cinematic-light"></span>
           </div>
 
           <div className="info-side right-side">
-            <div className="info-block clickable-info" onClick={() => navigate("/destinations-info")}>
+            <div
+              className="info-block clickable-info"
+              onClick={() => navigate("/destinations-info")}
+            >
               <h3>Cities & Destinations</h3>
               <ul>
                 <li>Cairo</li>
@@ -334,9 +390,22 @@ export default function Home() {
                 <li>Aswan</li>
                 <li>Sharm El Sheikh</li>
               </ul>
+
+              <button
+                className="read-btn"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  navigate("/basic-facts");
+                }}
+              >
+                Read More →
+              </button>
             </div>
 
-            <div className="info-block clickable-info" onClick={() => navigate("/activities")}>
+            <div
+              className="info-block clickable-info"
+              onClick={() => navigate("/activities")}
+            >
               <h3>Activities</h3>
               <ul>
                 <li>Visit monuments</li>
@@ -344,9 +413,22 @@ export default function Home() {
                 <li>Diving in the Red Sea</li>
                 <li>Desert safari</li>
               </ul>
+
+              <button
+                className="read-btn"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  navigate("/basic-facts");
+                }}
+              >
+                Read More →
+              </button>
             </div>
 
-            <div className="info-block clickable-info" onClick={() => navigate("/food")}>
+            <div
+              className="info-block clickable-info"
+              onClick={() => navigate("/food")}
+            >
               <h3>Food</h3>
               <ul>
                 <li>Koshari</li>
@@ -354,6 +436,15 @@ export default function Home() {
                 <li>Molokhia</li>
                 <li>Fattah</li>
               </ul>
+              <button
+                className="read-btn"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  navigate("/basic-facts");
+                }}
+              >
+                Read More →
+              </button>
             </div>
           </div>
         </div>
@@ -381,17 +472,23 @@ export default function Home() {
 
         <div className="featured-packages-grid">
           <div className="featured-package-card">
+            <img src={packages[0].img} alt={packages[0].name} />
             <h3>Cart 1</h3>
+            <h4>{packages[0].name} Trip</h4>
             <button type="button">View details</button>
           </div>
 
           <div className="featured-package-card">
+            <img src={packages[1].img} alt={packages[1].name} />
             <h3>Cart 2</h3>
+            <h4>{packages[1].name}</h4>
             <button type="button">View details</button>
           </div>
 
           <div className="featured-package-card">
+            <img src={packages[2].img} alt={packages[2].name} />
             <h3>Cart 3</h3>
+            <h4>{packages[2].name} Trip</h4>
             <button type="button">View details</button>
           </div>
         </div>
@@ -548,95 +645,95 @@ export default function Home() {
         </div>
       </section>
 
-     <footer className="footer-section">
-  <div className="footer-container">
-    <div className="footer-col">
-      <h2 className="footer-logo">Egypt Holiday</h2>
-      <p className="footer-desc">
-        Discover Egypt with us. We offer the best travel experiences,
-        luxury packages, and unforgettable adventures.
-      </p>
+      <footer className="footer-section">
+        <div className="footer-container">
+          <div className="footer-col">
+            <h2 className="footer-logo">Egypt Holiday</h2>
+            <p className="footer-desc">
+              Discover Egypt with us. We offer the best travel experiences,
+              luxury packages, and unforgettable adventures.
+            </p>
 
-      <div className="footer-social">
-  <a
-    href="https://www.facebook.com/share/18deN5D3jr/"
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    <i className="fab fa-facebook-f"></i>
-  </a>
+            <div className="footer-social">
+              <a
+                href="https://www.facebook.com/share/18deN5D3jr/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <i className="fab fa-facebook-f"></i>
+              </a>
 
-  <a
-    href="https://www.instagram.com/egyptholidaytravel0?igsh=OXVtdjM4YWF0N3Fz"
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    <i className="fab fa-instagram"></i>
-  </a>
+              <a
+                href="https://www.instagram.com/egyptholidaytravel0?igsh=OXVtdjM4YWF0N3Fz"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <i className="fab fa-instagram"></i>
+              </a>
 
-  <a
-    href="https://wa.me/201099999234"
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    <i className="fab fa-whatsapp"></i>
-  </a>
+              <a
+                href="https://wa.me/201099999234"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <i className="fab fa-whatsapp"></i>
+              </a>
 
-  <a
-    href="https://www.tiktok.com/@egyptholiday.travel"
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    <i className="fab fa-tiktok"></i>
-  </a>
-</div>
-    </div>
+              <a
+                href="https://www.tiktok.com/@egyptholiday.travel"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <i className="fab fa-tiktok"></i>
+              </a>
+            </div>
+          </div>
 
-    <div className="footer-col">
-      <h3>Company</h3>
-      <a href="#hero">Home</a>
-      <a href="/packages">Packages</a>
-      <a href="#">Hotels</a>
-      <a href="#">Flights</a>
-    </div>
+          <div className="footer-col">
+            <h3>Company</h3>
+            <a href="#hero">Home</a>
+            <a href="/packages">Packages</a>
+            <a href="#">Hotels</a>
+            <a href="#">Flights</a>
+          </div>
 
-    <div className="footer-col">
-      <h3>Support</h3>
-      <a href="#">Reservation Info</a>
-      <a href="#">Cancellation Policy</a>
-      <a href="#">Terms & Conditions</a>
-    </div>
+          <div className="footer-col">
+            <h3>Support</h3>
+            <a href="#">Reservation Info</a>
+            <a href="#">Cancellation Policy</a>
+            <a href="#">Terms & Conditions</a>
+          </div>
 
-    <div className="footer-col contact-col">
-      <h3>Contact</h3>
+          <div className="footer-col contact-col">
+            <h3>Contact</h3>
 
-      <div className="contact-block">
-        <div className="contact-icon">📞</div>
-        <div className="contact-text">
-          <p>01099999234</p>
-          <p>01050971444</p>
-          <p>01050383173</p>
-          <p>0111787867</p>
+            <div className="contact-block">
+              <div className="contact-icon">📞</div>
+              <div className="contact-text">
+                <p>01099999234</p>
+                <p>01050971444</p>
+                <p>01050383173</p>
+                <p>0111787867</p>
+              </div>
+            </div>
+
+            <div className="contact-block">
+              <div className="contact-icon">📍</div>
+              <div className="contact-text">
+                <p>El-Siiz Area, next to El-Eman Mosque</p>
+                <p>Mansoura Branch</p>
+                <p>22 Abou Dawoud El Zahery Street</p>
+                <p>Next to Arab Investment Bank</p>
+                <p>Nasr City, Cairo, Egypt</p>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
 
-      <div className="contact-block">
-        <div className="contact-icon">📍</div>
-        <div className="contact-text">
-          <p>El-Siiz Area, next to El-Eman Mosque</p>
-          <p>Mansoura Branch</p>
-          <p>22 Abou Dawoud El Zahery Street</p>
-          <p>Next to Arab Investment Bank</p>
-          <p>Nasr City, Cairo, Egypt</p>
+        <div className="footer-bottom">
+          © 2026 Egypt Holiday Travel — All rights reserved
         </div>
-      </div>
-    </div>
-  </div>
-
-  <div className="footer-bottom">
-    © 2026 Egypt Holiday Travel — All rights reserved
-  </div>
-</footer>
+      </footer>
 
       {showButton && (
         <button className="book-now-btn" onClick={handleBookNow}>

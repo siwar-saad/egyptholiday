@@ -16,7 +16,12 @@ export default function Navbar() {
       </div>
 
       <nav className="navbar-links">
+
         <button className="nav-link-btn" onClick={() => navigate("/")}>
+          Home
+        </button>
+
+        <button className="nav-link-btn" onClick={() => navigate("/#Flights")}>
           Flights
         </button>
 
