@@ -1,107 +1,159 @@
-@import url("https://fonts.googleapis.com/css2?family=Inika:wght@400;700&display=swap");
-
 .packages-page {
   min-height: 100vh;
-  background: #d8aa73;
-  font-family: "Inika", serif;
-  padding-top: 70px;
+  background: #ffffff;
+  color: #24160f;
+  padding-top: 80px;
 }
 
 .packages-hero {
-  padding: 35px 20px 25px;
+  min-height: 450px;
+  background:
+    linear-gradient(rgba(36, 22, 15, 0.55), rgba(36, 22, 15, 0.45)),
+    url("../assets/image/bgpac.png");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
+  padding: 40px 20px;
+}
+
+.packages-hero-content span {
+  color: #f3c38f;
+  font-weight: 700;
+  letter-spacing: 1px;
 }
 
 .packages-hero-content h1 {
-  font-size: 28px;
-  font-weight: 700;
+  font-family: "Playfair Display", serif;
+  font-size: clamp(40px, 6vw, 72px);
+  color: #ffffff;
+  margin: 14px 0;
+}
+
+.packages-hero-content p {
+  color: #f7efe6;
+  font-size: 17px;
+  max-width: 620px;
+  margin: auto;
+  line-height: 1.6;
+}
+
+.packages-section {
+  max-width: 1200px;
+  margin: auto;
+  padding: 70px 20px;
+}
+
+.packages-section h2 {
+  text-align: center;
+  font-family: "Playfair Display", serif;
+  font-size: 38px;
+  margin-bottom: 42px;
+  color: #24160f;
+}
+
+.packages-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.package-card {
+  background: #ffffff;
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.09);
+  border: 1px solid rgba(147, 84, 38, 0.12);
+  transition: 0.35s ease;
+}
+
+.package-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 22px 45px rgba(147, 84, 38, 0.18);
+}
+
+.package-img-box {
+  height: 230px;
+  overflow: hidden;
+}
+
+.package-img-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: 0.5s ease;
+}
+
+.package-card:hover .package-img-box img {
+  transform: scale(1.08);
+}
+
+.package-content {
+  padding: 22px;
+}
+
+.package-content h3 {
+  font-family: "Playfair Display", serif;
+  font-size: 25px;
   color: #24160f;
   margin-bottom: 10px;
 }
 
-.packages-hero-content p {
-  font-size: 11px;
-  color: #3c2a1f;
-  max-width: 520px;
-  margin: 0 auto;
-  line-height: 1.5;
+.package-content p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #5f5248;
+  margin-bottom: 20px;
 }
 
-.packages-grid-section {
-  padding: 20px 10px 40px;
+.package-btn {
+  display: inline-block;
+  padding: 11px 20px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #935426, #723d19);
+  color: #ffffff;
+  font-weight: 700;
+  text-decoration: none;
+  transition: 0.3s ease;
 }
 
-.packages-grid {
-  max-width: 980px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 22px 28px;
-  justify-items: center;
+.package-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 28px rgba(147, 84, 38, 0.35);
 }
 
-.package-card {
-  position: relative;
-  width: 100%;
-  max-width: 150px;
-  height: 120px;
-  border-radius: 6px;
-  overflow: hidden;
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+.packages-page {
+  padding-top: 0;
 }
 
-.package-card:hover {
-  transform: translateY(-4px) scale(1.03);
-  box-shadow: 0 14px 24px rgba(0, 0, 0, 0.16);
+
+
+.packages-page .navbar-logo {
+  filter: none;
 }
 
-.package-card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.35s ease;
+.packages-hero {
+  padding-top: 90px;
 }
 
-.package-card:hover img {
-  transform: scale(1.06);
-}
-
-.package-card span {
-  position: absolute;
-  top: 6px;
-  left: 6px;
-  background: rgba(216, 170, 115, 0.88);
-  color: #24160f;
-  font-size: 10px;
-  padding: 3px 7px;
-  border-radius: 6px;
-  text-transform: lowercase;
-}
-
-@media (max-width: 900px) {
+@media (max-width: 992px) {
   .packages-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 18px 20px;
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 600px) {
-  .packages-page {
-    padding-top: 60px;
-  }
-
-  .packages-hero-content h1 {
-    font-size: 24px;
-  }
-
   .packages-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
   }
 
-  .package-card {
-    max-width: 135px;
-    height: 112px;
+  .packages-hero {
+    min-height: 300px;
+  }
+
+  .packages-section {
+    padding: 50px 16px;
   }
 }

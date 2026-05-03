@@ -7,6 +7,8 @@ import Geography from "./page/Geography";
 import DestinationsInfo from "./page/DestinationsInfo";
 import Activities from "./page/Activities";
 import Food from "./page/Food";
+import Packages from "./page/Packages";
+
 
 function App() {
   return (
@@ -20,6 +22,7 @@ function App() {
         <Route path="/destinations-info" element={<DestinationsInfo />} />
         <Route path="/activities" element={<Activities />} />
         <Route path="/food" element={<Food />} />
+        <Route path="/packages" element={<Packages />} />
       </Routes>
     </BrowserRouter>
   );
