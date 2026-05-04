@@ -11,7 +11,6 @@ export default function Login() {
   return (
     <div className="auth-page">
       <div className="auth-card">
-
         {/* LEFT SIDE */}
         <div className="auth-left">
           <div className="auth-shape"></div>
@@ -27,7 +26,13 @@ export default function Login() {
         <div className="auth-right">
           <h2>Log In</h2>
 
-          <form className="auth-form">
+          <form
+            className="auth-form"
+            onSubmit={(e) => {
+              e.preventDefault();
+              navigate("/");
+            }}
+          >
             <input type="email" placeholder="Email" required />
             <input type="password" placeholder="Password" required />
 
@@ -42,13 +47,10 @@ export default function Login() {
 
             <p className="auth-switch">
               Don’t have an account?{" "}
-              <span onClick={() => navigate("/signup")}>
-                Sign up
-              </span>
+              <span onClick={() => navigate("/signup")}>Sign up</span>
             </p>
           </form>
         </div>
-
       </div>
     </div>
   );

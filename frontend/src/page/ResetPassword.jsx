@@ -10,15 +10,15 @@ export default function ResetPassword() {
   const [error, setError] = useState("");
 
   const handleReset = (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    if (password !== confirm) {
-      setError("Passwords do not match");
-      return;
-    }
+  if (password !== confirm) {
+    setError("Passwords do not match");
+    return;
+  }
 
-    navigate("/login");
-  };
+  navigate("/");
+};
 
   return (
     <div className="forgot-page">
