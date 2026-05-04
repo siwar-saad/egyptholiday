@@ -1,62 +1,54 @@
-import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Login.css";
-import loginImg from "../assets/image/login.png";
-import Navbar from "../components/navbar";
-
+import logoImg from "../assets/image/login.png";
+import pyramid from "../assets/image/pyramid.webp";
+import passport from "../assets/image/passport.webp";
+import visa from "../assets/image/visa.webp";
 
 export default function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log({ email, password });
-  };
+  const navigate = useNavigate();
 
   return (
-    <div className="login-page">
-      <Navbar />
+    <div className="auth-page">
+      <div className="auth-card">
 
-      <div className="login-container">
-        <div className="login-left">
-          <h1>log In</h1>
+        {/* LEFT SIDE */}
+        <div className="auth-left">
+          <div className="auth-shape"></div>
 
-          <form onSubmit={handleSubmit} className="login-form">
-            <input
-              type="email"
-              placeholder="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
+          <img src={logoImg} alt="logo" className="auth-brand-image" />
 
-            <input
-              type="password"
-              placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
+          <img src={pyramid} className="auth-icon icon-pyramid" />
+          <img src={passport} className="auth-icon icon-passport" />
+          <img src={visa} className="auth-icon icon-visa" />
+        </div>
 
-            <a href="#" className="forgot-password">
-              Forgot Password
-            </a>
+        {/* RIGHT SIDE */}
+        <div className="auth-right">
+          <h2>Log In</h2>
+
+          <form className="auth-form">
+            <input type="email" placeholder="Email" required />
+            <input type="password" placeholder="Password" required />
+
+            <span
+              className="forgot-password"
+              onClick={() => navigate("/forgot-password")}
+            >
+              Forgot Password?
+            </span>
 
             <button type="submit">Log In</button>
 
-            <div className="login-social">
-              <span>Or login with</span>
-              <div className="social-icons">
-                <span>G</span>
-                <span>f</span>
-              </div>
-            </div>
+            <p className="auth-switch">
+              Don’t have an account?{" "}
+              <span onClick={() => navigate("/signup")}>
+                Sign up
+              </span>
+            </p>
           </form>
         </div>
 
-        <div className="login-right">
-          <div className="login-image-box">
-            <img src={loginImg} alt="Egypt queen" />
-          </div>
-        </div>
       </div>
     </div>
   );

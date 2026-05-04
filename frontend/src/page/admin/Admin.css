@@ -1,0 +1,166 @@
+.admin-page {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  background: #f8f4ef;
+  color: #24160f;
+}
+
+.admin-sidebar {
+  background: #ffffff;
+  padding: 30px 22px;
+  box-shadow: 8px 0 30px rgba(0, 0, 0, 0.06);
+}
+
+.admin-sidebar h2 {
+  font-family: "Playfair Display", serif;
+  color: #935426;
+  margin-bottom: 35px;
+}
+
+.admin-sidebar nav {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.admin-sidebar a {
+  padding: 13px 16px;
+  border-radius: 14px;
+  cursor: pointer;
+  font-weight: 700;
+  transition: 0.3s;
+}
+
+.admin-sidebar a:hover,
+.admin-sidebar .active {
+  background: #935426;
+  color: white;
+}
+
+.admin-main {
+  padding: 35px;
+}
+
+.admin-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.admin-top h1 {
+  font-family: "Playfair Display", serif;
+  font-size: 38px;
+}
+
+.admin-top p {
+  color: #6e5b4d;
+}
+
+.admin-top button,
+.admin-panel button {
+  border: none;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #935426, #723d19);
+  color: white;
+  padding: 12px 20px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.admin-top button:hover,
+.admin-panel button:hover {
+  transform: translateY(-3px);
+}
+
+.admin-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-bottom: 28px;
+}
+
+.admin-stat-card,
+.admin-panel {
+  background: white;
+  border-radius: 22px;
+  padding: 24px;
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.07);
+}
+
+.admin-stat-card p {
+  color: #6e5b4d;
+  margin-bottom: 10px;
+}
+
+.admin-stat-card h3 {
+  font-size: 32px;
+  color: #935426;
+}
+
+.admin-content {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 24px;
+}
+
+.admin-panel h2 {
+  font-family: "Playfair Display", serif;
+  margin-bottom: 18px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 14px 8px;
+  border-bottom: 1px solid #eee;
+}
+
+th {
+  color: #935426;
+}
+
+.status {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.confirmed {
+  background: #e6f7ec;
+  color: #16833a;
+}
+
+.pending {
+  background: #fff1d8;
+  color: #a86700;
+}
+
+.admin-panel.small {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+@media (max-width: 900px) {
+  .admin-page {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-sidebar {
+    position: static;
+  }
+
+  .admin-stats,
+  .admin-content {
+    grid-template-columns: 1fr;
+  }
+}
