@@ -1,54 +1,62 @@
 const express = require("express");
 const router = express.Router();
-const destinations = require("../data/destinations");
+const pool = require('../config/database');
 
 // GET /api/packages - Get all packages (for Packages page)
-router.get("/", (req, res) => {
+router.get("/", async (req, res) => {
   const search = req.query.search || "";
   
-  let packages = Object.entries(destinations).map(([key, value]) => ({
-    id: value.id,
-    title: value.name,
-    image: value.image,
-    description: value.description,
-    region: value.region,
-    hotelCount: value.hotels.length,
-    activityCount: value.activities.length
-  }));
-  
-  if (search) {
-    packages = packages.filter((item) =>
-      item.title.toLowerCase().includes(search.toLowerCase())
-    );
+  try {
+    let query = `SELECT id, title, image FROM packages`;
+    let params = [];
+    
+    if (search) {
+      query += ` WHERE title ILIKE $1`;
+      params = [`%${search}%`];
+    }
+    
+    query += ` ORDER BY id`;
+    
+    const result = await pool.query(query, params);
+    
+    const packages = result.rows.map(pkg => ({
+      id: pkg.id,
+      title: pkg.title,
+      image: pkg.image
+    }));
+    
+    res.json({
+      success: true,
+      count: packages.length,
+      packages: packages
+    });
+  } catch (error) {
+    console.error('Packages query error:', error);
+    res.status(500).json({ success: false, error: 'Database error' });
   }
-  
-  res.json({
-    success: true,
-    count: packages.length,
-    packages: packages
-  });
 });
 
 // GET /api/packages/:id - Get single package details
-router.get("/:id", (req, res) => {
+router.get("/:id", async (req, res) => {
   const id = req.params.id;
   
-  let foundDestination = null;
-  for (const [key, value] of Object.entries(destinations)) {
-    if (value.id === id || key === id) {
-      foundDestination = value;
-      break;
+  try {
+    const result = await pool.query('SELECT * FROM destinations WHERE id = $1 OR name ILIKE $1', [id]);
+    
+    if (result.rows.length === 0) {
+      return res.status(404).json({ success: false, error: "Package not found" });
     }
+    
+    const destination = result.rows[0];
+    
+    res.json({
+      success: true,
+      package: JSON.parse(destination.data)
+    });
+  } catch (error) {
+    console.error('Package query error:', error);
+    res.status(500).json({ success: false, error: 'Database error' });
   }
-  
-  if (!foundDestination) {
-    return res.status(404).json({ success: false, error: "Package not found" });
-  }
-  
-  res.json({
-    success: true,
-    package: foundDestination
-  });
 });
 
 module.exports = router;

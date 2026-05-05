@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import API from "../api";
 import "./ForgotPassword.css";
 
 export default function ForgotPassword() {
@@ -12,49 +13,62 @@ export default function ForgotPassword() {
   const [canResend, setCanResend] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
 
-  // test code (later backend)
-  const correctCode = "123456";
-
-  // send code
-  const handleSend = (e) => {
-    e.preventDefault();
-    setShowCode(true);
-    setError("");
-
+  const startResendTimer = () => {
     setCanResend(false);
     setTimeout(() => setCanResend(true), 5000);
   };
 
-  // verify code
-  const handleVerify = (e) => {
+  const handleSend = async (e) => {
     e.preventDefault();
+    setError("");
 
-    if (code === correctCode) {
-      navigate("/reset-password");
-    } else {
-      setError("Invalid code. Please try again.");
+    try {
+      await API.post("/auth/forgot-password", { email });
+
+      setShowCode(true);
+      startResendTimer();
+    } catch (error) {
+      setError(error.response?.data?.error || "Failed to send code");
     }
   };
 
-  // resend code
-  const handleResend = () => {
+  const handleVerify = async (e) => {
+    e.preventDefault();
     setError("");
-    setCanResend(false);
-    setShowPopup(true);
 
-    setTimeout(() => setCanResend(true), 5000);
+    try {
+      await API.post("/auth/verify-reset-code", {
+        email,
+        code,
+      });
+
+      navigate("/reset-password", {
+        state: { email, code },
+      });
+    } catch (error) {
+      setError(error.response?.data?.error || "Invalid code. Please try again.");
+    }
+  };
+
+  const handleResend = async () => {
+    setError("");
+
+    try {
+      await API.post("/auth/forgot-password", { email });
+
+      setShowPopup(true);
+      startResendTimer();
+    } catch (error) {
+      setError(error.response?.data?.error || "Failed to resend code");
+    }
   };
 
   return (
     <div className="forgot-page">
       <div className="forgot-card">
-
         <h1>Forgot Password</h1>
-        <p>
-          Enter your email and we will send you a verification code.
-        </p>
+        <p>Enter your email and we will send you a verification code.</p>
 
-        {/* EMAIL */}
         <form className="forgot-form" onSubmit={handleSend}>
           <input
             type="email"
@@ -62,12 +76,12 @@ export default function ForgotPassword() {
             required
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            disabled={showCode}
           />
 
-          <button type="submit">Send Code</button>
+          {!showCode && <button type="submit">Send Code</button>}
         </form>
 
-        {/* CODE BOX */}
         {showCode && (
           <form className="forgot-form code-box" onSubmit={handleVerify}>
             <input
@@ -86,7 +100,7 @@ export default function ForgotPassword() {
               Didn’t receive the code?{" "}
               <span
                 className={canResend ? "active" : "disabled"}
-                onClick={canResend ? handleResend : null}
+                onClick={canResend ? handleResend : undefined}
               >
                 Resend code
               </span>
@@ -94,28 +108,19 @@ export default function ForgotPassword() {
           </form>
         )}
 
-        {/* BACK */}
-        <span
-          className="back-login"
-          onClick={() => navigate("/login")}
-        >
+        {!showCode && error && <span className="error-text">{error}</span>}
+
+        <span className="back-login" onClick={() => navigate("/login")}>
           ← Back to Login
         </span>
-
       </div>
 
-      {/* POPUP */}
       {showPopup && (
         <div className="popup-overlay">
           <div className="popup-card">
             <h3>Code Sent</h3>
-            <p>
-              A new verification code has been sent to your email.
-            </p>
-
-            <button onClick={() => setShowPopup(false)}>
-              OK
-            </button>
+            <p>A new verification code has been sent to your email.</p>
+            <button onClick={() => setShowPopup(false)}>OK</button>
           </div>
         </div>
       )}

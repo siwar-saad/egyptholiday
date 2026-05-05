@@ -1,29 +1,51 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
+import API from "../api";
 import "./ForgotPassword.css";
 
 export default function ResetPassword() {
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const email = location.state?.email;
+  const code = location.state?.code;
 
   const [password, setPassword] = useState("");
   const [confirm, setConfirm] = useState("");
   const [error, setError] = useState("");
 
-  const handleReset = (e) => {
+  const handleReset = async (e) => {
     e.preventDefault();
+    setError("");
+
+    if (!email || !code) {
+      setError("Missing email or code. Please try again.");
+      return;
+    }
 
     if (password !== confirm) {
       setError("Passwords do not match");
       return;
     }
 
-    navigate("/login");
+    try {
+      await API.post("/auth/reset-password", {
+        email,
+        code,
+        newPassword: password,
+        confirmPassword: confirm,
+      });
+
+      alert("Password changed successfully ✅");
+      navigate("/login");
+    } catch (error) {
+      setError(error.response?.data?.error || "Reset failed ❌");
+    }
   };
 
   return (
     <div className="forgot-page">
       <div className="forgot-card">
-
         <h1>Reset Password</h1>
 
         <form className="forgot-form" onSubmit={handleReset}>
@@ -47,7 +69,6 @@ export default function ResetPassword() {
 
           <button type="submit">Save</button>
         </form>
-
       </div>
     </div>
   );
