@@ -4,11 +4,15 @@ import pyramid from "../../assets/image/pyramid.webp";
 import passport from "../../assets/image/passport.webp";
 import visa from "../../assets/image/visa.webp";
 import login from "../../assets/image/login.png";
+import Navbar from "../../components/navbar";
 
 export default function Signup() {
   const navigate = useNavigate();
 
   return (
+  <div>
+    <Navbar />
+
     <div className="auth-page">
       <div className="auth-card">
         <div className="auth-left">
@@ -49,6 +53,7 @@ export default function Signup() {
           </form>
         </div>
       </div>
+    </div>
     </div>
   );
 }

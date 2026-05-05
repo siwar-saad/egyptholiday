@@ -7,6 +7,10 @@
   padding: 30px;
 }
 
+.auth-page {
+  padding-top: 100px;
+}
+
 /* CARD */
 .auth-card {
   width: 100%;
