@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import API from "../api";
+import API from "../../api";
 import "./ForgotPassword.css";
 
 export default function ResetPassword() {
@@ -23,10 +23,10 @@ export default function ResetPassword() {
       return;
     }
 
-    if (password !== confirm) {
-      setError("Passwords do not match");
-      return;
-    }
+  if (password !== confirm) {
+    setError("Passwords do not match");
+    return;
+  }
 
     try {
       await API.post("/auth/reset-password", {

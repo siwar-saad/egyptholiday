@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import API from "../api";
+import API from "../../api";
 import "./Login.css";
 
-import pyramid from "../assets/image/pyramid.webp";
-import passport from "../assets/image/passport.webp";
-import visa from "../assets/image/visa.webp";
-import login from "../assets/image/login.png";
-import Navbar from "../components/navbar";
+import pyramid from "../../assets/image/pyramid.webp";
+import passport from "../../assets/image/passport.webp";
+import visa from "../../assets/image/visa.webp";
+import login from "../../assets/image/login.png";
+import Navbar from "../../components/navbar";
 
 export default function Signup() {
   const navigate = useNavigate();
