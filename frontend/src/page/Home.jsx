@@ -339,7 +339,7 @@ export default function Home() {
                 className="read-btn"
                 onClick={(e) => {
                   e.stopPropagation();
-                  navigate("/basic-facts");
+                  navigate("/history");
                 }}
               >
                 Read More →
@@ -360,7 +360,7 @@ export default function Home() {
                 className="read-btn"
                 onClick={(e) => {
                   e.stopPropagation();
-                  navigate("/basic-facts");
+                  navigate("/geography");
                 }}
               >
                 Read More →
@@ -395,7 +395,7 @@ export default function Home() {
                 className="read-btn"
                 onClick={(e) => {
                   e.stopPropagation();
-                  navigate("/basic-facts");
+                  navigate("/destinations-info");
                 }}
               >
                 Read More →
@@ -418,7 +418,7 @@ export default function Home() {
                 className="read-btn"
                 onClick={(e) => {
                   e.stopPropagation();
-                  navigate("/basic-facts");
+                  navigate("/activities");
                 }}
               >
                 Read More →
@@ -440,7 +440,7 @@ export default function Home() {
                 className="read-btn"
                 onClick={(e) => {
                   e.stopPropagation();
-                  navigate("/basic-facts");
+                  navigate("/food");
                 }}
               >
                 Read More →

@@ -1,9 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
-import pyramid from "../assets/image/pyramid.webp";
-import passport from "../assets/image/passport.webp";
-import visa from "../assets/image/visa.webp";
-import login from "../assets/image/login.png";
+import pyramid from "../../assets/image/pyramid.webp";
+import passport from "../../assets/image/passport.webp";
+import visa from "../../assets/image/visa.webp";
+import login from "../../assets/image/login.png";
 
 export default function Signup() {
   const navigate = useNavigate();

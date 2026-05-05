@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./page/Home";
-import Login from "./page/Login";
+import Login from "./page/login_signup/Login";
 import BasicFacts from "./page/BasicFacts";
 import History from "./page/History";
 import Geography from "./page/Geography";
@@ -9,9 +9,10 @@ import Activities from "./page/Activities";
 import Food from "./page/Food";
 import Packages from "./page/Packages";
 import Admin from "./page/admin/Admin";
-import Signup from "./page/Signup";
-import ForgotPassword from "./page/ForgotPassword";
-import ResetPassword from "./page/ResetPassword";
+import Signup from "./page/login_signup/Signup";
+import ForgotPassword from "./page/login_signup/ForgotPassword";
+import ResetPassword from "./page/login_signup/ResetPassword";
+import UserProfile from "./page/client/profile/UserProfile";
 
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/reset-password" element={<ResetPassword />} />
+        <Route path="/profile" element={<UserProfile />} />
       </Routes>
     </BrowserRouter>
   );
